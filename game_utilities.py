@@ -36,3 +36,22 @@ def filter_word_list(word_list, hangman_string, previous_guesses):
             word_list = [word for word in word_list if word[i] == hangman_string[i]]
 
     return word_list
+
+
+def sort_letters_by_occurrence(word_list):
+    """Return a list containing the letters of the alphabet sorted in
+    descending order based on their frequency of occurrence in the word list.
+    """
+
+    # Count the total number of letters in the word list
+    total_letters = sum([len(word) for word in word_list])
+    # Create a dictionary to store each letter and it's frequency of occurrence
+    letter_freqs = {}
+
+    # Calculate the frequency of each letter in the word list
+    for letter in list(string.ascii_lowercase):
+        frequency = sum([word.count(letter) for word in word_list]) / total_letters
+        letter_freqs[letter] = frequency
+
+    # Return the sorted list of letters in descending order
+    return sorted(letter_freqs, key=lambda k: letter_freqs[k])[::-1]
