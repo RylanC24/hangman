@@ -55,3 +55,12 @@ def sort_letters_by_occurrence(word_list):
 
     # Return the sorted list of letters in descending order
     return sorted(letter_freqs, key=lambda k: letter_freqs[k])[::-1]
+
+
+def get_next_guess(word_list, previous_guesses):
+    """Return the letter that will be, statistically speaking, the best guess
+    at this point in the hangman game.
+    """
+
+    letters = sort_letters_by_occurrence(word_list)
+    return [letter for letter in letters if letter not in previous_guesses][0]
