@@ -40,21 +40,19 @@ def filter_word_list(word_list, hangman_string, previous_guesses):
 
 def sort_letters_by_occurrence(word_list):
     """Return a list containing the letters of the alphabet sorted in
-    descending order based on their frequency of occurrence in the word list.
+    descending order based on their total number of occurrence in the word list.
     """
 
-    # Count the total number of letters in the word list
-    total_letters = sum([len(word) for word in word_list])
     # Create a dictionary to store each letter and it's frequency of occurrence
-    letter_freqs = {}
+    letter_counts = {}
 
     # Calculate the frequency of each letter in the word list
     for letter in list(string.ascii_lowercase):
-        frequency = sum([word.count(letter) for word in word_list]) / total_letters
-        letter_freqs[letter] = frequency
+        count = sum([word.count(letter) for word in word_list])
+        letter_counts[letter] = count
 
     # Return the sorted list of letters in descending order
-    return sorted(letter_freqs, key=lambda k: letter_freqs[k])[::-1]
+    return sorted(letter_counts, key=lambda k: letter_counts[k])[::-1]
 
 
 def get_next_guess(word_list, previous_guesses):
