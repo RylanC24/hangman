@@ -1,4 +1,4 @@
-import strings
+import string
 
 
 def load_dictionary(file):
