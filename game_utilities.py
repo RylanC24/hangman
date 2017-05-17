@@ -10,7 +10,7 @@ def load_dictionary(file):
     with open(file, 'r') as f:
         for line in f:
             words.append(line.strip('\n'))
-    file.close()
+    f.close()
     words = list(set([word.lower() for word in words]))
     return words
 
